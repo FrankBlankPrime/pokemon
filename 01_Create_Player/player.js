@@ -6,7 +6,11 @@
 // Region (string)
 // Money (Number, default to 0)
 const player = {
-
+  name: "Frank",
+  portrait: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjFEHV6FBtxnq3SK9V27ZP5B2ilGQ5kfXFDw&s",
+  age: 29,
+  region: "Johto",
+  money: 0
 }
 // --------------------------------------------------------------------
 // Add a Bag object to the player object. 
@@ -18,7 +22,11 @@ const player = {
 // Pokémon (array, default to empty array)
 
 player.bag = {
-
+  items: [],
+  medicine: [],
+  pokeballs: [],
+  tms: [],
+  pokemon: []
 }
 
 // --------------------------------------------------------------------
@@ -44,10 +52,54 @@ player.bag = {
 // https://pokemondb.net/
 // Or create your own original Pokémon if you’re feeling spicy! 🌶️
 //
+let ember = {
+  name: "Ember",
+  pp: 20,
+  damage: 25,
+  type: "Fire"
+}
+let smokescreen = {
+  name: "Smokescreen",
+  pp: 35,
+  damage: 0,
+  type: "Normal"
+}
 
-let starter = {};
-let rival = {};
+let starter = {
+  name: "Quentyn",
+  level: 5,
+  moveset: [ember, smokescreen],
+  type: "Fire",
+  hp: 25,
+  attack: 25,
+  speed: 25
+};
 
+console.log(starter)
+
+let bubblebeam = {
+  name: "Bubblebeam",
+  pp: 20,
+  damage: 25,
+  type: "Water"
+}
+let growl = {
+  name: "Growl",
+  pp: 35,
+  damage: 0,
+  type: "Normal"
+}
+let rival = {
+  name: "Totodile",
+  level: 5,
+  moveset: [bubblebeam, growl],
+  type: "Water",
+  hp: 25,
+  attack: 25,
+  speed: 25
+};
+
+console.log(rival)
 // --------------------------------------------------------------------
 // You choose a pokemon, but how does it get into your bag? 
 // Write a function that can add **any** object to **any** pocket in your bag.
@@ -74,7 +126,10 @@ let rival = {};
 // player.bag.pokeballs.push(item);
 
 player.addToBag = function (item, pocket) {
-
+  player.bag[pocket].push(item)
+  console.log("You've added " + item.name + " to your " + pocket + " pocket!")
+  console.log(player.bag)
+  return player.bag
 };
   
 // --------------------------------------------------------------------
@@ -94,7 +149,8 @@ let potion = {
   
 // Add the starter Pokémon and potion to the bag:
 
-
+player.addToBag (potion, "medicine")
+player.addToBag (starter, "pokemon")
 
 //--------------------------------------------------
 export default player;
